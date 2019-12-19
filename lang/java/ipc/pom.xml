@@ -22,7 +22,7 @@
 
   <parent>
     <artifactId>avro-parent</artifactId>
-    <groupId>org.apache.avro</groupId>
+    <groupId>io.yoyolabs.org.apache.avro</groupId>
     <version>1.8.2</version>
     <relativePath>../</relativePath>
   </parent>
@@ -44,7 +44,11 @@
       org.apache.velocity*;resolution:=optional,
       *
     </osgi.import>
-    <osgi.export>org.apache.avro.ipc*;version="${project.version}"</osgi.export>
+    <osgi.export>
+      io.yoyolabs.org.apache.avro.ipc*;version="${project.version}"
+      org.apache.avro.ipc*;version="${project.version}"
+    </osgi.export>
+
   </properties>
 
   <build>
@@ -54,33 +58,6 @@
       </resource>
     </resources>
     <plugins>
-      <plugin>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>avro-maven-plugin</artifactId>
-        <version>${project.version}</version>
-        <executions>
-          <execution>
-            <id>schemas</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>schema</goal>
-              <goal>protocol</goal>
-              <goal>idl-protocol</goal>
-            </goals>
-            <configuration>
-              <excludes>
-                <exclude>**/mapred/tether/**</exclude>
-                <exclude>org/apache/avro/data/Json.avsc</exclude>
-              </excludes>
-              <stringType>String</stringType>
-              <sourceDirectory>${parent.project.basedir}/../../../../share/schemas/</sourceDirectory>
-              <outputDirectory>${project.build.directory}/generated-sources/java</outputDirectory>
-              <testSourceDirectory>${parent.project.basedir}/../../../../share/test/schemas/</testSourceDirectory>
-              <testOutputDirectory>${project.build.directory}/generated-test-sources/java</testOutputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -109,9 +86,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
+      <groupId>org.apache.avro</groupId>
       <artifactId>avro-compiler</artifactId>
-      <version>${project.version}</version>
+      <version>1.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>

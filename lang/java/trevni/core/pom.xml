@@ -21,7 +21,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>trevni-java</artifactId>
-    <groupId>org.apache.avro</groupId>
+    <groupId>io.yoyolabs.org.apache.avro</groupId>
     <version>1.8.2</version>
     <relativePath>../</relativePath>
   </parent>
@@ -46,10 +46,6 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-      </plugin>
     </plugins>
   </build>
 

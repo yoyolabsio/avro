@@ -22,7 +22,7 @@
 
   <parent>
     <artifactId>avro-parent</artifactId>
-    <groupId>org.apache.avro</groupId>
+    <groupId>io.yoyolabs.org.apache.avro</groupId>
     <version>1.8.2</version>
     <relativePath>../</relativePath>
   </parent>
@@ -43,7 +43,10 @@
       org.apache.ant*,
       *
     </osgi.import>
-    <osgi.export>org.apache.avro.compiler*;version="${project.version}"</osgi.export>
+    <osgi.export>
+      io.yoyolabs.org.apache.avro.compiler*;version="${project.version}"
+      org.apache.avro.compiler*;version="${project.version}"
+    </osgi.export>
   </properties>
 
   <build>

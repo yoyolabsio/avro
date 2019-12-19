@@ -22,7 +22,7 @@
 
   <parent>
     <artifactId>avro-parent</artifactId>
-    <groupId>org.apache.avro</groupId>
+    <groupId>io.yoyolabs.org.apache.avro</groupId>
     <version>1.8.2</version>
     <relativePath>../</relativePath>
   </parent>
@@ -42,7 +42,8 @@
       org.xerial.snappy;resolution:=optional,
       *
     </osgi.import>
-    <osgi.export>org.apache.avro*;version="${project.version}"</osgi.export>
+    <osgi.export>io.yoyolabs.org.apache.avro*;version="${project.version}",org.apache.avro*;version="${project.version}"</osgi.export>
+
   </properties>
 
   <build>

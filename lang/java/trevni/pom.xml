@@ -22,14 +22,14 @@
 
   <parent>
     <artifactId>avro-parent</artifactId>
-    <groupId>org.apache.avro</groupId>
+    <groupId>io.yoyolabs.org.apache.avro</groupId>
     <version>1.8.2</version>
     <relativePath>../</relativePath>
   </parent>
 
   <artifactId>trevni-java</artifactId>
   <name>Trevni Java</name>
-  <groupId>org.apache.avro</groupId>
+  <groupId>io.yoyolabs.org.apache.avro</groupId>
   <description>Trevni Java</description>
   <url>http://avro.apache.org/</url>
   <packaging>pom</packaging>
@@ -59,24 +59,6 @@
             <source>1.6</source>
             <target>1.6</target>
           </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>${checkstyle-plugin.version}</version>
-          <configuration>
-            <consoleOutput>true</consoleOutput>
-            <configLocation>checkstyle.xml</configLocation>
-          </configuration>
-          <executions>
-            <execution>
-              <id>checkstyle-check</id>
-              <phase>test</phase>
-              <goals>
-                <goal>check</goal>
-              </goals>
-            </execution>
-          </executions>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

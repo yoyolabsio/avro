@@ -22,7 +22,7 @@
 
   <parent>
     <artifactId>avro-parent</artifactId>
-    <groupId>org.apache.avro</groupId>
+    <groupId>io.yoyolabs.org.apache.avro</groupId>
     <version>1.8.2</version>
     <relativePath>../</relativePath>
   </parent>
@@ -31,7 +31,7 @@
 
   <name>Apache Avro Mapred API</name>
   <description>An org.apache.hadoop.mapred compatible API for using Avro Serializatin in Hadoop</description>
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
 
   <properties>
     <osgi.import>
@@ -41,6 +41,8 @@
       *
     </osgi.import>
     <osgi.export>
+      io.yoyolabs.org.apache.avro.mapred*;version="${project.version}",
+      io.yoyolabs.org.apache.avro.hadoop*;version="${project.version}",
       org.apache.avro.mapred*;version="${project.version}",
       org.apache.avro.hadoop*;version="${project.version}",
     </osgi.export>
@@ -48,48 +50,6 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>avro-maven-plugin</artifactId>
-        <version>${project.version}</version>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>schema</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>test-schemas</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>schema</goal>
-              <goal>protocol</goal>
-            </goals>
-            <!-- compile only test protocols and schemas and place them in the classpath. -->
-            <configuration>
-              <sourceDirectory></sourceDirectory>
-              <testSourceDirectory>${parent.project.basedir}/../../../../share/test/schemas/</testSourceDirectory>
-              <testOutputDirectory>${project.build.directory}/generated-test-sources/java</testOutputDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <id>mapred-schema</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>protocol</goal>
-            </goals>
-            <configuration>
-              <stringType>String</stringType>
-              <includes>
-                <include>**/mapred/tether/*.avpr</include>
-              </includes>
-              <sourceDirectory>${parent.project.basedir}/../../../../share/schemas/</sourceDirectory>
-              <outputDirectory>${project.build.directory}/generated-sources/java</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -141,21 +101,26 @@
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>avro-ipc</artifactId>
-      <version>${project.version}</version>
+      <groupId>io.yoyolabs.org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
+      <version>1.8.2</version>
     </dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
+      <groupId>io.yoyolabs.org.apache.avro</groupId>
+      <artifactId>avro-ipc</artifactId>
+      <version>1.8.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.yoyolabs.org.apache.avro</groupId>
       <artifactId>avro-ipc</artifactId>
       <classifier>tests</classifier>
-      <version>${project.version}</version>
+      <version>1.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
+      <groupId>io.yoyolabs.org.apache.avro</groupId>
       <artifactId>avro</artifactId>
-      <version>${project.version}</version>
+      <version>1.8.2</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
